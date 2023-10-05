@@ -17,6 +17,9 @@ namespace SuperAdventure
         public SuperAdventure()
         {
             InitializeComponent();
+
+            Location location = new Location(1, "Home", "This is your house.");
+
             _player = new Player();
             _player.CurrentHitPoints = 10;
             _player.MaximumHitPoints = 10;
@@ -31,7 +34,7 @@ namespace SuperAdventure
 
         private void btnTest_Click(object sender, EventArgs e)
         {
-            
+               
         }
     }
 }
