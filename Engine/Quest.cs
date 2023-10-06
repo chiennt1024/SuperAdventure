@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Engine
 {
-    internal class Quest
+    public class Quest
     {
         public int ID { get; set; }
         public string Name { get; set; }
@@ -12,9 +12,9 @@ namespace Engine
         public int RewardExperiencePoints { get; set; }
         public int RewardGold { get; set; }
 
-        public Quest (int iD, string name, string description, int rewardExperiencePoints, int rewardGold)
+        public Quest (int id, string name, string description, int rewardExperiencePoints, int rewardGold)
         {
-            ID = iD;
+            ID = id;
             Name = name;
             Description = description;
             RewardExperiencePoints = rewardExperiencePoints;
