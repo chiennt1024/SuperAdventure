@@ -290,6 +290,12 @@ namespace SuperAdventure
             }
         }
 
+        private void ScrollToBottomOfMessages()
+        {
+            rtbMessages.SelectionStart = rtbMessages.Text.Length;
+            rtbMessages.ScrollToCaret();
+        }
+
         private void btnUseWeapon_Click(object sender, EventArgs e)
         {
             // Get the currently selected weapon from the cboWeapons ComboBox
@@ -452,6 +458,11 @@ namespace SuperAdventure
             lblHitPoints.Text = _player.CurrentHitPoints.ToString();
             UpdateInventoryListInUI();
             UpdatePotionListInUI();
+        }
+
+        private void rtbMessages_TextChanged(object sender, EventArgs e)
+        {
+            ScrollToBottomOfMessages();
         }
     }
 }
