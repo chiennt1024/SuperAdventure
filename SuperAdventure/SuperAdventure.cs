@@ -19,14 +19,11 @@ namespace SuperAdventure
         {
             InitializeComponent();
 
-            _player = new Player(10, 10, 20, 0, 1);
+            _player = new Player(10, 10, 20, 0);
             MoveTo(World.LocationByID(World.LOCATION_ID_HOME));
             _player.Inventory.Add(new InventoryItem(World.ItemByID(World.ITEM_ID_RUSTY_SWORD), 1));
 
-            lblHitPoints.Text = _player.CurrentHitPoints.ToString();
-            lblGold.Text = _player.Gold.ToString();
-            lblExperience.Text = _player.ExperiencePoints.ToString();
-            lblLevel.Text = _player.Level.ToString();
+            UpdatePlayerStats();
         }
 
         private void btnNorth_Click(object sender, EventArgs e)
@@ -48,7 +45,14 @@ namespace SuperAdventure
         {
             MoveTo(_player.CurrentLocation.LocationToSouth);
         }
-
+        private void UpdatePlayerStats()
+        {
+            // Refresh player information and inventory controls
+            lblHitPoints.Text = _player.CurrentHitPoints.ToString();
+            lblGold.Text = _player.Gold.ToString();
+            lblExperience.Text = _player.ExperiencePoints.ToString();
+            lblLevel.Text = _player.Level.ToString();
+        }
         private void MoveTo(Location newLocation)
         {
             //Does the location have any required items
@@ -76,6 +80,7 @@ namespace SuperAdventure
 
             // Update Hit Points in UI
             lblHitPoints.Text = _player.CurrentHitPoints.ToString();
+
 
             // Does the location have a quest?
             if (newLocation.QuestAvailableHere != null)
@@ -177,6 +182,7 @@ namespace SuperAdventure
                 btnUseWeapon.Visible = false;
                 btnUsePotion.Visible = false;
             }
+            UpdatePlayerStats();
 
             // Refresh player's inventory list
             UpdateInventoryListInUI();
@@ -370,6 +376,7 @@ namespace SuperAdventure
                 lblExperience.Text = _player.ExperiencePoints.ToString();
                 lblLevel.Text = _player.Level.ToString();
 
+                UpdatePlayerStats();
                 UpdateInventoryListInUI();
                 UpdateWeaponListInUI();
                 UpdatePotionListInUI();
