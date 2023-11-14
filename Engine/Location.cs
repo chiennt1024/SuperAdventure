@@ -24,5 +24,6 @@ namespace Engine
             QuestAvailableHere = questAvailableHere;
             MonsterLivingHere = monsterLivingHere;
         }
+        public Vendor VendorWorkingHere { get; set; }
     }
 }
